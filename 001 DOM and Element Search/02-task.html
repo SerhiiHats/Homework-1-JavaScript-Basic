@@ -29,6 +29,10 @@
     getRandomColor функция, которая возвращает случайно сгенерированный цвет в фомрмате #001122
     Используя функцию getRandomColor добавьте для каждого параграфа рамку случайного цвета
     */
+
+    document.querySelectorAll("p").forEach(elem => {elem.style.border = "2px solid" + getRandomColor();});
+
+
     function getRandomColor() {
         var letters = '0123456789ABCDEF';
         var color = '#';
@@ -37,6 +41,14 @@
         }
         return color;
     }
+
+    //второй вариант более длинный
+    // let paragrafs = document.querySelectorAll("p");
+    // for (const paragraf of paragrafs) {
+    //     let color = getRandomColor();
+    //     paragraf.style.border = "2px solid" + color;
+    // }
+
 </script>
 
 </html>
