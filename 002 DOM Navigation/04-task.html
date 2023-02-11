@@ -16,7 +16,8 @@
             border: 1px solid black;
         }
 
-        td, th {
+        td,
+        th {
             padding: 8px;
         }
     </style>
@@ -64,6 +65,14 @@
         Если во второй ячейке значение больше 100, строка должна отображаться зеленым цветом, если значение менее 100 - красным цветом.
         Для смены цвета строки используйте код row.style.backgroundColor = "цвет"
         */
+        let rowsOfMonth = document.querySelector("#statsTable").rows;
+        let total = 0;
+        for (let index = 0; index < rowsOfMonth.length - 1; index++) {
+            rowsOfMonth[index].style.backgroundColor = (Number(rowsOfMonth[index].cells[1].textContent) < 100) ? "red" :
+                "green";
+            total += Number(rowsOfMonth[index].cells[1].textContent);
+        }
+        document.querySelector("#output").textContent = total;
     </script>
 </body>
 
