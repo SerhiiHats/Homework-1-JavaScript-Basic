@@ -35,9 +35,10 @@
             return color;
         }
 
-        let colorSampleDiv = document.querySelector("#color-sample");
-        colorSampleDiv.style.backgroundColor = getRandomColor();
-
+        let colorSampleDiv = document.querySelector("#color-sample");        
+        let color = colorSampleDiv.style.backgroundColor = getRandomColor();
+        let contentParagraf = colorSampleDiv.nextElementSibling.textContent;
+        colorSampleDiv.nextElementSibling.textContent = contentParagraf + color;
 
     </script>
 </body>
