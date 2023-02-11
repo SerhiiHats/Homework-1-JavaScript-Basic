@@ -39,7 +39,6 @@
         </p>
 
         <script>
-
             /*
             Задание:
             Перепишите код таким образом, чтобы он не поменял своего поведения, но результат работы сценария выводился не в консоль, а в соответствующие p.
@@ -50,8 +49,7 @@
             Компании пользователей с наименьшим балансом - параграф с id lowestBalanceCompanyOutput
             */
             // массив сгенерирован с помощью https://next.json-generator.com/
-            let users = [
-                {
+            let users = [{
                     balance: '1250.89',
                     age: 24,
                     name: {
@@ -60,8 +58,7 @@
                     },
                     company: 'EWAVES',
                     email: 'golden.clements@ewaves.io',
-                    friends: [
-                        {
+                    friends: [{
                             id: 0,
                             name: 'Buchanan Austin'
                         },
@@ -113,8 +110,7 @@
                     },
                     company: 'XPLOR',
                     email: 'francis.hebert@xplor.biz',
-                    friends: [
-                        {
+                    friends: [{
                             id: 0,
                             name: 'Clements Glass'
                         },
@@ -146,8 +142,7 @@
                     },
                     company: 'EARTHPURE',
                     email: 'hale.cross@earthpure.us',
-                    friends: [
-                        {
+                    friends: [{
                             id: 0,
                             name: 'Terri Clark'
                         },
@@ -199,8 +194,7 @@
                     },
                     company: 'ASSITIA',
                     email: 'delores.sykes@assitia.com',
-                    friends: [
-                        {
+                    friends: [{
                             id: 0,
                             name: 'Amy Fox'
                         },
@@ -248,8 +242,7 @@
                     },
                     company: 'MOLTONIC',
                     email: 'ryan.bolton@moltonic.biz',
-                    friends: [
-                        {
+                    friends: [{
                             id: 0,
                             name: 'Weaver Buchanan'
                         },
@@ -277,8 +270,7 @@
                     },
                     company: 'UXMOX',
                     email: 'carey.schwartz@uxmox.info',
-                    friends: [
-                        {
+                    friends: [{
                             id: 0,
                             name: 'Lilia Wiggins'
                         },
@@ -326,8 +318,7 @@
                     },
                     company: 'TERRASYS',
                     email: 'trevino.mullins@terrasys.org',
-                    friends: [
-                        {
+                    friends: [{
                             id: 0,
                             name: 'Corine Deleon'
                         },
@@ -367,8 +358,7 @@
                     },
                     company: 'ZENTHALL',
                     email: 'gilliam.mendez@zenthall.tv',
-                    friends: [
-                        {
+                    friends: [{
                             id: 0,
                             name: 'Nora Ratliff'
                         },
@@ -412,8 +402,7 @@
                     },
                     company: 'QIMONK',
                     email: 'brewer.vargas@qimonk.co.uk',
-                    friends: [
-                        {
+                    friends: [{
                             id: 0,
                             name: 'Tamera Sharp'
                         },
@@ -441,8 +430,7 @@
                     },
                     company: 'VISALIA',
                     email: 'newman.wynn@visalia.name',
-                    friends: [
-                        {
+                    friends: [{
                             id: 0,
                             name: 'Lopez Mccarthy'
                         },
@@ -487,29 +475,73 @@
                 }
             ];
 
+            // function showAllEmails() {
+            //     console.log("Электронные адреса пользователей:")
+            //     users.forEach(user => console.log(user.email));
+            // }
+
             function showAllEmails() {
-                console.log("Электронные адреса пользователей:")
-                users.forEach(user => console.log(user.email));
+                let usersAllEmails = "";
+                users.forEach(user => usersAllEmails += "<p>" + user.email + "</p>");
+                document.querySelector("#emailAddressesOutput").innerHTML = usersAllEmails;
             }
 
+            // function showHigestFriendCount() {
+            //     console.log("Пользователи с наибольшим количеством друзей");
+            //     let max = Number.MIN_VALUE;
+            //     users.forEach(user => {
+            //         if (max < user.friends.length)
+            //             max = user.friends.length;
+            //     });
+
+            //     users
+            //         .filter(user => user.friends.length == max)
+            //         .forEach(user => console.log(user.name.first + " " + user.name.last));
+            // }
+
             function showHigestFriendCount() {
-                console.log("Пользователи с наибольшим количеством друзей");
-
                 let max = Number.MIN_VALUE;
-
                 users.forEach(user => {
                     if (max < user.friends.length)
                         max = user.friends.length;
                 });
-
+                let usersOfHighestFriends = "";
                 users
                     .filter(user => user.friends.length == max)
-                    .forEach(user => console.log(user.name.first + " " + user.name.last));
+                    .forEach(user => usersOfHighestFriends += "<p>" + (user.name.first + " " + user.name.last) +
+                        "</p>");
+                document.querySelector("#greatesFriendsCountOutput").innerHTML = usersOfHighestFriends;
             }
+
+            // function showMinMaxBalance() {
+            //     let minBalance = Number.MAX_VALUE;
+            //     let maxBalance = Number.MIN_VALUE;
+
+            //     users.forEach(user => {
+            //         const currentBalance = +user.balance;
+            //         if (currentBalance > maxBalance)
+            //             maxBalance = currentBalance;
+            //         else if (currentBalance < minBalance) {
+            //             minBalance = currentBalance;
+            //         }
+            //     });
+
+            //     console.log("Компании пользователей с наибольшим балансом:")
+            //     users
+            //         .filter(user => user.balance == maxBalance)
+            //         .forEach(user => console.log(user.company));
+
+            //     console.log("Компании пользователей с наименьшим балансом:")
+            //     users
+            //         .filter(user => user.balance == minBalance)
+            //         .forEach(user => console.log(user.company));
+            // }
 
             function showMinMaxBalance() {
                 let minBalance = Number.MAX_VALUE;
                 let maxBalance = Number.MIN_VALUE;
+                let companyWithMaxBalance = "";
+                let companyWithMinBalance = "";
 
                 users.forEach(user => {
                     const currentBalance = +user.balance;
@@ -520,16 +552,17 @@
                     }
                 });
 
-                console.log("Компании пользователей с наибольшим балансом:")
                 users
                     .filter(user => user.balance == maxBalance)
-                    .forEach(user => console.log(user.company));
+                    .forEach(user => companyWithMaxBalance += "<p>" + user.company + "</p>");
+                document.querySelector("#greatestBalanceCompanyOutput").innerHTML = companyWithMaxBalance;
 
-                console.log("Компании пользователей с наименьшим балансом:")
                 users
                     .filter(user => user.balance == minBalance)
-                    .forEach(user => console.log(user.company));
+                    .forEach(user => companyWithMinBalance += "<p>" + user.company + "</p>");
+                document.querySelector("#lowestBalanceCompanyOutput").innerHTML = companyWithMinBalance;
             }
+
 
             showAllEmails();
             showHigestFriendCount();
