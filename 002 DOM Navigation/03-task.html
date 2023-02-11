@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -16,11 +17,14 @@
             border: 1px solid black;
         }
 
-        td, th {
+        td,
+        th {
             padding: 8px;
+
         }
     </style>
 </head>
+
 <body>
     <table id="statsTable">
         <tr>
@@ -63,7 +67,13 @@
             <td>125</td>
             <td>100</td>
         </tr>
+        <tr>
+            <td>Итого</td>
+            <td></td>
+            <td></td>
+        </tr>
     </table>
+
 
     <div id="result"></div>
 
@@ -75,6 +85,22 @@
         В div с id result выведите сообщение "Отдел 1 сделал больше продаж" или "Отдел 2 сделал больше продаж" на основе раннее вычисленных значений в строке "Итого".
         Используйте любые методы, которые были рассмотрены на в прошлых уроках.
         */
+
+        let rowsOfMonth = document.querySelector("#statsTable").rows;
+        let totalFirstDepartament = 0;
+        let totalSecondDepartament = 0;
+
+        for (let i = 1; i < rowsOfMonth.length - 1; i++) {
+            totalFirstDepartament += Number(rowsOfMonth[i].cells[1].textContent);
+            totalSecondDepartament += Number(rowsOfMonth[i].cells[2].textContent);
+        }
+
+        rowsOfMonth[rowsOfMonth.length - 1].cells[1].textContent = totalFirstDepartament;
+        rowsOfMonth[rowsOfMonth.length - 1].cells[2].textContent = totalSecondDepartament
+
+        document.querySelector("#result").textContent = (totalFirstDepartament > totalSecondDepartament) ?
+            "Отдел 1 сделал больше продаж" : "Отдел 2 сделал больше продаж";
     </script>
 </body>
+
 </html>
