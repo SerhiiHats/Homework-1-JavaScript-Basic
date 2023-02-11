@@ -27,6 +27,9 @@
 
     <input type="radio" name="answer" checked /> Yes
     <input type="radio" name="answer" /> No
+    <br>
+    <input type="radio" name="unanswer" checked /> Yes
+    <input type="radio" name="unanswer" /> No
 
     <ul class="my-list">
         <li>List Item 1-1</li>
@@ -56,24 +59,40 @@
         на вызовы методов querySelector или querySelectorAll так, чтобы поведение сценария не изменилось.
         */
 
-        let paragraph = document.getElementById("first");
+        // let paragraph = document.getElementById("first");
+        let paragraph = document.querySelector("#first");
         paragraph.style.border = "2px solid red";
+        // document.querySelector("#first").style.border = "2px solid red";     //the second option
 
-        let radioButtons = document.getElementsByName("answer");
+
+        // let radioButtons = document.getElementsByName("answer");
+        let radioButtons = document.querySelectorAll("input[name='answer']");
         for (const button of radioButtons) {
             button.checked = !button.checked;
         }
+        // document.querySelectorAll("input[name = 'answer']").forEach(elem => {
+        //     elem.checked = !elem.checked;
+        // });                                                                  //the second option
 
-        let listItems = document.getElementsByTagName("li");
+
+        // let listItems = document.getElementsByTagName("li");
+        let listItems = document.querySelectorAll("li");
         for (const item of listItems) {
             item.style.margin = "2px";
             item.style.border = "2px solid green";
         }
+        // document.querySelectorAll("li").forEach(elem => {
+        //     elem.style.border = "2px solid green";
+        //     elem.style.margin = "2px";
+        // });                                                                   //the second option
 
-        let lists = document.getElementsByClassName("my-list");
+
+        // let lists = document.getElementsByClassName("my-list");
+        let lists = document.querySelectorAll(".my-list");
         for (const list of lists) {
             list.style.border = "2px solid blue";
         }
+        // document.querySelectorAll(".my-list").forEach(elem => elem.style.border = "2px solid blue"); //the second option
     </script>
 </body>
 
